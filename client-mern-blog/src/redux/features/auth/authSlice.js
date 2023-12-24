@@ -45,6 +45,7 @@ export const loginUser = createAsyncThunk(
     },
 )
 
+
 export const getMe = createAsyncThunk('auth/loginUser', async () => {
     try {
         const { data } = await axios.get('/auth/me')

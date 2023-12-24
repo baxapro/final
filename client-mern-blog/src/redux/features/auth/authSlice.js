@@ -1,5 +1,6 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
 import axios from '../../../utils/axios'
+import instance from "../../../utils/axios";
 
 const initialState = {
     user: null,
@@ -76,7 +77,7 @@ export const authSlice = createSlice({
             state.user = action.payload.user
             state.token = action.payload.token
         },
-        [registerUser.rejectWithValue]: (state, action) => {
+        [registerUser.rejected]: (state, action) => {
             state.status = action.payload.message
             state.isLoading = false
         },
@@ -91,7 +92,7 @@ export const authSlice = createSlice({
             state.user = action.payload.user
             state.token = action.payload.token
         },
-        [loginUser.rejectWithValue]: (state, action) => {
+        [loginUser.rejected]: (state, action) => {
             state.status = action.payload.message
             state.isLoading = false
         },
@@ -106,7 +107,7 @@ export const authSlice = createSlice({
             state.user = action.payload?.user
             state.token = action.payload?.token
         },
-        [getMe.rejectWithValue]: (state, action) => {
+        [getMe.rejected]: (state, action) => {
             state.status = action.payload.message
             state.isLoading = false
         },

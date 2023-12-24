@@ -28,7 +28,7 @@ export const PostPage = () => {
     const { user } = useSelector((state) => state.auth)
     const { comments } = useSelector((state) => state.comment)
     const navigate = useNavigate()
-    const params = useParams()
+    const   params = useParams()
     const dispatch = useDispatch()
 
     const removePostHandler = () => {
@@ -53,7 +53,7 @@ export const PostPage = () => {
 
     const fetchComments = useCallback(async () => {
         try {
-            dispatch(getPostComments(params.id))
+            dispatch(getPostComments( params.id ))
         } catch (error) {
             console.log(error)
         }
@@ -80,26 +80,22 @@ export const PostPage = () => {
         )
     }
     return (
-        <div>
-            <button className='flex justify-center items-center bg-gray-600 text-xs text-white rounded-sm py-2 px-4'>
-                <Link className='flex' to={'/'}>
-                    Назад
-                </Link>
-            </button>
 
-            <div className='flex gap-10 py-8'>
-                <div className='w-2/3'>
+        <div className='container'>
+
+            <div className='flex gap-10 justify-center py-8'>
+                <div className=' w-2/4'>
                     <div className='flex flex-col basis-1/4 flex-grow'>
                         <div
                             className={
                                 post?.imgUrl
-                                    ? 'flex rouded-sm h-80'
+                                    ? 'flex rounded-sm h-50'
                                     : 'flex rounded-sm'
                             }
                         >
                             {post?.imgUrl && (
                                 <img
-                                    src={`http://localhost:3002/${post.imgUrl}`}
+                                    src={`http://localhost:4444/${post.imgUrl}`}
                                     alt='img'
                                     className='object-cover w-full'
                                 />

@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { useDispatch } from 'react-redux'
+import { useDispatch , useSelector} from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 import { createPost } from '../redux/features/post/postSlice'
 
@@ -11,12 +11,15 @@ export const AddPostPage = () => {
     const dispatch = useDispatch()
     const navigate = useNavigate()
 
+
     const submitHandler = () => {
         try {
             const data = new FormData()
             data.append('title', title)
             data.append('text', text)
             data.append('image', image)
+
+
             dispatch(createPost(data))
             navigate('/')
         } catch (error) {
